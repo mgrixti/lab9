@@ -1,0 +1,45 @@
+> db.books.find({id: 587})
+{ "_id" : ObjectId("56e36ea8ee90f3471806a567"), "id" : 587, "isbn10" : "032183724X", "isbn13" : NumberLong("9780321837240"), "title" : "Algebra and Trigonometry", "year" : 2014, "publisher" : "Pearson", "production" : { "status" : "Complete", "binding" : "Casebound", "size" : "8-1/2\" x 11\"", "pages" : "1,200", "instock" : "12/21/2012" }, "category" : { "main" : "Mathematics", "secondary" : "Precalculus" } }
+
+
+
+> db.books.find({'category.secondary': 'Calculus'})
+{ "_id" : ObjectId("56e36ea8ee90f3471806a56f"), "id" : 608, "isbn10" : "0133116530", "isbn13" : NumberLong("9780133116533"), "title" : "Basic Technical Mathematics with Calculus", "year" : 2014, "publisher" : "Pearson", "production" : { "status" : "Complete", "binding" : "Casebound", "size" : "8-1/2\" x 10-7/8\"", "pages" : "1,192", "instock" : "1/2/2013" }, "category" : { "main" : "Mathematics", "secondary" : "Calculus" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a573"), "id" : 633, "isbn10" : "0321848837", "isbn13" : NumberLong("9780321848833"), "title" : "Brief Calculus & Its Applications", "year" : 2014, "publisher" : "Pearson", "production" : { "status" : "Complete", "binding" : "Casebound", "size" : "8-1/2\" x 10-7/8\"", "pages" : 600, "instock" : "1/30/2013" }, "category" : { "main" : "Mathematics", "secondary" : "Calculus" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a57d"), "id" : 604, "isbn10" : "0321838203", "isbn13" : NumberLong("9780321838209"), "title" : "Calculus and Its Applications Expanded Version", "year" : 2014, "publisher" : "Pearson", "production" : { "status" : "Complete", "binding" : "Casebound", "size" : "8-1/2\" x 10-7/8\"", "pages" : 984, "instock" : "12/31/2012" }, "category" : { "main" : "Mathematics", "secondary" : "Calculus" } }
+
+
+
+> db.books.find({id: {$gte:700, $lte: 710}})
+{ "_id" : ObjectId("56e36ea8ee90f3471806a565"), "id" : 701, "isbn10" : "013267145X", "isbn13" : NumberLong("9780132671453"), "title" : "Adaptive Filter Theory", "year" : 2014, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Casebound", "size" : "7\" x 9-1/8\"", "pages" : 936, "instock" : "5/15/2013" }, "category" : { "main" : "Engineering", "secondary" : "Electrical" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5b1"), "id" : 704, "isbn10" : "0133354857", "isbn13" : NumberLong("9780133354850"), "title" : "Fundamentals of Communication Systems", "year" : 2014, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Casebound", "size" : "7\" x 9-1/8\"", "pages" : 832, "instock" : "6/21/2013" }, "category" : { "main" : "Engineering", "secondary" : "Electrical" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5cd"), "id" : 706, "isbn10" : "013601772X", "isbn13" : NumberLong("9780136017721"), "title" : "Introduction to Engineering Analysis", "year" : 2009, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Paperback", "size" : "8\" x 10\"", "pages" : 366, "instock" : "8/15/2013" }, "category" : { "main" : "Engineering", "secondary" : "General" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5e6"), "id" : 707, "isbn10" : "0321566440", "isbn13" : NumberLong("9780321566447"), "title" : "Managerial Economics", "year" : 2014, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Casebound", "size" : "8\" x 10\"", "pages" : 800, "instock" : "8/23/2013" }, "category" : { "main" : "Economics", "secondary" : "Principles of Economics" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a607"), "id" : 703, "isbn10" : "0133023672", "isbn13" : NumberLong("9780133023671"), "title" : "Principles of Macroeconomics", "year" : 2014, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Paperback", "size" : "8-1/2\" x 10-7/8\"", "pages" : 471, "instock" : "6/14/2013" }, "category" : { "main" : "Economics", "secondary" : "Macroeconomics" } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a616"), "id" : 705, "isbn10" : "0133451607", "isbn13" : NumberLong("9780133451603"), "title" : "Statics and Mechanics of Materials", "year" : 2014, "publisher" : "Prentice Hall", "production" : { "status" : "Scheduled", "binding" : "Casebound", "size" : "8\" x 9-1/4\"", "pages" : 896, "instock" : "7/19/2013" }, "category" : { "main" : "Engineering", "secondary" : "General" } }
+
+
+
+> db.books.find({publisher: 'Prentice Hall', 'category.main': 'Computer Science'}, {title:1, 'production.pages':1})
+{ "_id" : ObjectId("56e36ea8ee90f3471806a58a"), "title" : "Cryptography and Network Security: Principles and Practice", "production" : { "pages" : 744 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a58c"), "title" : "Data Structures and Algorithm Analysis in C++", "production" : { "pages" : 608 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5ab"), "title" : "Essentials of Database Management", "production" : { "pages" : 524 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5d2"), "title" : "Introduction to Programming with C++", "production" : { "pages" : 672 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a5fa"), "title" : "Network Security Essentials: Applications and Standards, 5/e", "production" : { "pages" : 432 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a632"), "title" : "Visual Basic 2012 How to Program", "production" : { "pages" : 672 } }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a633"), "title" : "Visual C# 2012 How to Program", "production" : { "pages" : 998 } }
+
+
+
+> db.books.find({title: /Algebra/}, {title: 1, isbn10: 1}).limit(5)
+{ "_id" : ObjectId("56e36ea8ee90f3471806a567"), "isbn10" : "032183724X", "title" : "Algebra and Trigonometry" }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a568"), "isbn10" : "0321826124", "title" : "Algebra and Trigonometry with Modeling & Visualization" }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a580"), "isbn10" : "0321782283", "title" : "College Algebra" }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a581"), "isbn10" : "0321833651", "title" : "College Algebra Essentials" }
+{ "_id" : ObjectId("56e36ea8ee90f3471806a582"), "isbn10" : "0321826132", "title" : "College Algebra with Modeling & Visualization" }
+
+
+
+> db.books.aggregate([{$match : {title: /Algebra/}}, {$group : {_id: '$production.status', count : {$sum: 1}}}])
+{ "_id" : "Scheduled", "count" : 4 }
+{ "_id" : "Complete", "count" : 15 }
